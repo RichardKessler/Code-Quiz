@@ -12,6 +12,7 @@ const btn4El = document.querySelector("#btn4");
 const lostTime = 10;
 
 
+
 var highScore = 0;
 var playerScore = 0;
 
