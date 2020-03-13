@@ -2,6 +2,8 @@
 //need the functions for the timer and game start button to activate
 
 const startButton = document.getElementById('start');
+const questionContainerEl = document.getElementById('question-container');
+
 
 
 const questArr = [{
@@ -53,15 +55,19 @@ const questArr = [{
 
 
 
-// function startQuiz() {
-//     console.log('Started');
-// }
-
-
-
-// Play button on click run the game logic
-startButton.addEventListener('click', startQuiz);
-
 function startQuiz() {
+    startButton.classList.add('hide');
+    questionContainerEl.classList.remove('hide');
     console.log('Started');
 }
+
+function nextQuestion() {
+
+}
+
+
+
+
+
+// Clicking the start button starts the game
+startButton.addEventListener('click', startQuiz);
