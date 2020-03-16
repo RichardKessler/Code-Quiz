@@ -13,7 +13,7 @@ var inProgress = 0;
 
 var playerScore = 0;
 
-const gameTime = 40;
+var gameTime = 40;
 
 var shuffleQuest, currentQuest;
 
@@ -73,8 +73,8 @@ function setTime(secondsLeft) {
             if (secondsLeft === 0) {
                 clearInterval(timerInterval);
                 inProgress = false;
-                $("#startGame").show();
-                gameMessage("It's game over man, game over");
+                // $("#startGame").show();
+                // gameMessage("It's game over man, game over");
             }
         }, 1000);
     }
@@ -121,15 +121,15 @@ function getAnswer(e) {
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
     setStatus(document.getElementById('result'), correct);
+    Array.from(answerEl.children).forEach(button => {
+        setStatus(button, button.dataset.correct);
+    })
     if (correct) {
         playerScore++;
         console.log(playerScore);
     } else {
         console.log("Better luck next time!");
     }
-    Array.from(answerEl.children).forEach(button => {
-        setStatus(button, button.dataset.correct);
-    })
     if (shuffleQuest.length > currentQuest + 1) {
         nextButton.classList.remove('hide');
     } else {
@@ -140,17 +140,11 @@ function getAnswer(e) {
 
 function setStatus(element, correct) {
     clearStatus(element);
-    if (correct) {
-
-    } else {
-
-    }
 }
 
 function clearStatus(element) {
-    nextButton.classList.remove('hide');
-    element.classList.remove('hide');
-    element.classList.remove('hide');
+    nextButton.classList.add('hide');
+
 }
 
 // Clicking the start button starts the game
@@ -159,4 +153,5 @@ startButton.addEventListener('click', startQuiz);
 nextButton.addEventListener('click', () => {
     currentQuest++;
     nextQuestion();
+    clearStatus();
 })
