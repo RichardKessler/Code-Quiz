@@ -9,11 +9,11 @@ const answerEl = document.getElementById('answer-buttons');
 const resultEl = document.getElementById('result');
 const timeEl = document.getElementById('timer');
 
-var inProgress = 0;
-
-var playerScore = 0;
+var playerScore = timeEl.textContent;
 
 var gameTime = 40;
+
+var inProgress = false;
 
 var shuffleQuest, currentQuest;
 
@@ -70,11 +70,9 @@ function setTime(secondsLeft) {
             secondsLeft--;
             timeEl.textContent = "Time: " + secondsLeft;
             console.log("current timer: ", timeEl.textContent);
-            if (secondsLeft === 0) {
+            if (secondsLeft === 0 || shuffleQuest.length === currentQuest + 1) {
                 clearInterval(timerInterval);
                 inProgress = false;
-                // $("#startGame").show();
-                // gameMessage("It's game over man, game over");
             }
         }, 1000);
     }
@@ -86,6 +84,7 @@ function startQuiz() {
     shuffleQuest = questArr.sort(() => Math.random() - .5);
     currentQuest = 0;
     setTime(gameTime);
+    inProgress = true;
     nextQuestion();
     console.log('Started');
 }
@@ -125,14 +124,14 @@ function getAnswer(e) {
         setStatus(button, button.dataset.correct);
     })
     if (correct) {
-        playerScore++;
-        console.log(playerScore);
+        console.log('Correct!');
     } else {
         console.log("Better luck next time!");
     }
     if (shuffleQuest.length > currentQuest + 1) {
         nextButton.classList.remove('hide');
     } else {
+        inProgress = false;
         startButton.innerHTML = 'Try Again';
         startButton.classList.remove('hide');
     }
