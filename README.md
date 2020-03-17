@@ -30,6 +30,10 @@ After you have played a game if you want to see the last score that was recorded
 * HTML/CSS/JS
 * Github
 
+## Credits
+
+* Coding Study session - Eddie Saunders, Travis Cultreri, Shiva Sharma
+
 ## Author
 
 ```
