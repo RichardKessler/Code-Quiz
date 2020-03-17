@@ -78,3 +78,11 @@ footer {
     border-style: groove;
     background-color: white;
 }
+
+#player-scores,
+#high-scores {
+    padding: 0;
+    margin: 0;
+    color: crimson;
+    justify-content: center;
+}

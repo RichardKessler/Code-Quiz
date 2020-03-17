@@ -166,8 +166,8 @@ nextButton.addEventListener('click', () => {
 
 submitButton.addEventListener('click', function() {
     var player = {
-        playerScore: timeEl.textContent,
-        playerInput: inputEl.value
+        playerInput: inputEl.value,
+        playerScore: timeEl.textContent
     };
 
     localStorage.setItem("player", JSON.stringify(player));
