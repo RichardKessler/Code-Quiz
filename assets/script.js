@@ -127,6 +127,7 @@ function getAnswer(e) {
         setStatus(button, button.dataset.correct);
     })
     if (correct) {
+        alert('Correct')
         console.log('Correct!');
     } else {
         console.log("Better luck next time!");
