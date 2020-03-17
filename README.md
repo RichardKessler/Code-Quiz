@@ -5,6 +5,7 @@ A quiz that asks a series of questions about fundamental JavaScript knowledge.
 
 ```
 As a player I want to take a timed quiz the will record my score so I can compare with myslef.
+I want to understand the basic fundamentals of JavaScript.
 ```
 
 ## Getting Started
