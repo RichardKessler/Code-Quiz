@@ -3,13 +3,16 @@
 
 const startButton = document.getElementById('start');
 const nextButton = document.getElementById('next');
+const submitButton = document.getElementById("scoreInput")
 const questionContainerEl = document.getElementById('question-container');
 const questionEl = document.getElementById('question');
 const answerEl = document.getElementById('answer-buttons');
 const resultEl = document.getElementById('result');
 const timeEl = document.getElementById('timer');
+const inputEl = document.getElementById('playerInput');
 
 var playerScore = timeEl.textContent;
+var playerInput = inputEl.textContent;
 
 var gameTime = 40;
 
@@ -132,9 +135,15 @@ function getAnswer(e) {
         nextButton.classList.remove('hide');
     } else {
         inProgress = false;
+        recordScore();
         startButton.innerHTML = 'Try Again';
         startButton.classList.remove('hide');
     }
+}
+
+function recordScore() {
+    submitButton.classList.remove('hide');
+    inputEl.classList.remove('hide');
 }
 
 function setStatus(element, correct) {
@@ -153,4 +162,15 @@ nextButton.addEventListener('click', () => {
     currentQuest++;
     nextQuestion();
     clearStatus();
+})
+
+submitButton.addEventListener('click', function() {
+    var player = {
+        playerScore: timeEl.textContent,
+        playerInput: inputEl.value
+    };
+
+    localStorage.setItem("player", JSON.stringify(player));
+
+
 })
